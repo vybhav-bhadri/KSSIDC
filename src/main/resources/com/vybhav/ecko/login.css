@@ -1,0 +1,55 @@
+.root {
+    -fx-background-color: #2b2b2b;
+    -fx-font-family: "Arial";
+}
+
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+}
+
+.button {
+    -fx-background-color: #4a86e8;
+    -fx-text-fill: #ffffff;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+}
+
+.label {
+    -fx-text-fill: #ff0000;
+}
+
+#mainBox {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+}
+
+#loginBox {
+    -fx-padding: 20;
+    -fx-border-color: #4a86e8;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-background-color: #ffffff;
+}
+
+#welcomeLabel {
+    -fx-font-size: 24px;
+    -fx-text-fill: green;
+}
+
+#testUsernameLabel,
+#testPasswordLabel {
+    -fx-font-size: 12px;
+    -fx-text-fill: #4a86e8;
+    -fx-font-weight: bold;
+}
+
+#inputField {
+    -fx-border-color: #4a86e8;
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}

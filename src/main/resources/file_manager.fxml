@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane stylesheets="@com/vybhav/ecko/style.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vybhav.ecko.HelloController">
+    <top>
+        <HBox styleClass="navigation-bar">
+            <children>
+                <HBox spacing="10">
+                    <ImageView fitWidth="30" fitHeight="30">
+                        <image>
+                            <Image url="@govkar.png" />
+                        </image>
+                    </ImageView>
+                    <Label text="ECKO" styleClass="navigation-label" />
+                </HBox>
+
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="totalPageCountLabel" styleClass="navigation-label" />
+                <Region prefWidth="100" />
+                <TextField fx:id="searchField" promptText="Search File" styleClass="text-field" />
+                <Region prefWidth="10" />
+                <Button text="Search" onAction="#searchFile" styleClass="button" />
+                <Region prefWidth="10" />
+                <Button text="Logout" styleClass="button" fx:id="logoutButton" onAction="#logout"/>
+            </children>
+        </HBox>
+    </top>
+    <left>
+        <VBox alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <children>
+                <HBox spacing="10">
+                    <ImageView fitWidth="30" fitHeight="30">
+                        <image>
+                            <Image url="@folder-invoices--v1.png" />
+                        </image>
+                    </ImageView>
+                    <Label text="Folders" styleClass="section-label" />
+                </HBox>
+                <ListView fx:id="folderList" styleClass="list-view" VBox.vgrow="ALWAYS" />
+                <TextField fx:id="folderName" promptText="Folder Name" styleClass="text-field" />
+                <Button text="Create Folder" onAction="#createFolder" styleClass="button" />
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <VBox alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <children>
+                <HBox spacing="10">
+                    <ImageView fitWidth="30" fitHeight="30">
+                        <image>
+                            <Image url="@pdf.png" />
+                        </image>
+                    </ImageView>
+                    <Label text="Files in the selected Folder" styleClass="section-label-long" />
+                </HBox>
+                <ListView fx:id="fileList" styleClass="list-view-long" VBox.vgrow="ALWAYS" />
+                <Button text="Upload PDF" onAction="#uploadPDF" styleClass="button" />
+                <HBox spacing="10">
+                    <ImageView fitWidth="30" fitHeight="30">
+                        <image>
+                            <Image url="@search.png" />
+                        </image>
+                    </ImageView>
+                    <Label text="Search Result" styleClass="section-label-small" />
+                </HBox>
+                <ListView fx:id="searchResults" styleClass="list-view-small" VBox.vgrow="ALWAYS" />
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
