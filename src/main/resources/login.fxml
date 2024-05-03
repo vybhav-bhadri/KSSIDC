@@ -8,17 +8,31 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.HBox?>
-<VBox id="mainBox" stylesheets="@com/vybhav/ecko/login.css" alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vybhav.ecko.LoginController">
-    <Label fx:id="welcomeLabel" text="Namaste!" id="welcomeLabel"/>
-    <ImageView fitWidth="200" fitHeight="200">
-        <Image url="@govkar.png" /> <!-- replace logo.png with your own image -->
-    </ImageView>
-    <HBox fx:id="loginBox" alignment="CENTER" spacing="10.0" maxWidth="850">
-        <Label id="testUsernameLabel" text="User Name" />
-        <TextField fx:id="usernameField" promptText="Enter Username" maxWidth="250" id="inputField"/>
-        <Label id="testPasswordLabel" text="Password" />
-        <PasswordField fx:id="passwordField" promptText="Enter Password" maxWidth="250" id="inputField"/>
-        <Button text="Login" maxWidth="250" onAction="#login"/>
-    </HBox>
-    <Label fx:id="errorLabel" textFill="RED"/>
-</VBox>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Region?>
+<StackPane stylesheets="@com/vybhav/ecko/login.css" styleClass="background-image" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vybhav.ecko.LoginController">
+<!--    <HBox styleClass="logo-container">-->
+<!--        <ImageView fitWidth="200" fitHeight="200">-->
+<!--            <Image url="@govkar.png" />-->
+<!--        </ImageView>-->
+<!--    </HBox>-->
+    <VBox id="mainBox" alignment="BOTTOM_CENTER" spacing="10.0">
+        <ImageView fitWidth="161" fitHeight="139">
+            <Image url="@governmentOfKarnataka.png" /> <!-- replace logo.png with your own image -->
+        </ImageView>
+        <ImageView fitWidth="507" fitHeight="123">
+            <Image url="@KSSIDC_LOGO-removebg-preview.png" /> <!-- replace logo.png with your own image -->
+        </ImageView>
+        <HBox fx:id="loginBox" alignment="CENTER" spacing="10.0" maxWidth="850">
+            <Label id="testUsernameLabel" text="User ID" />
+            <TextField fx:id="usernameField" promptText="Enter User ID" maxWidth="250" id="inputField"/>
+            <Label id="testPasswordLabel" text="Password" />
+            <PasswordField fx:id="passwordField" promptText="Enter Password" maxWidth="250" id="inputField"/>
+            <Button text="Login" maxWidth="250" onAction="#login"/>
+        </HBox>
+        <Label fx:id="errorLabel" textFill="RED"/>
+        <Region styleClass="spacer" />
+        <Label styleClass="copyright-label" text="© 2023 Govt of Karnataka. All rights reserved."/>
+    </VBox>
+</StackPane>
+

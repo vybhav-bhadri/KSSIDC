@@ -8,76 +8,77 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<BorderPane stylesheets="@com/vybhav/ecko/style.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vybhav.ecko.HelloController">
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.StackPane?>
+<BorderPane stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vybhav.ecko.HelloController" styleClass="root-with-watermark">
     <top>
-        <HBox styleClass="navigation-bar">
-            <children>
-                <HBox spacing="10">
-                    <ImageView fitWidth="30" fitHeight="30">
-                        <image>
-                            <Image url="@govkar.png" />
-                        </image>
-                    </ImageView>
-                    <Label text="ECKO" styleClass="navigation-label" />
-                </HBox>
-
-                <Region HBox.hgrow="ALWAYS" />
-                <Label fx:id="totalPageCountLabel" styleClass="navigation-label" />
-                <Region prefWidth="100" />
+        <StackPane styleClass="navigation-bar">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ImageView fitWidth="50" fitHeight="50">
+                    <image>
+                        <Image url="@governmentOfKarnataka.png" />
+                    </image>
+                </ImageView>
+                <Label text="Karnataka State Small Industries Development Corporation" styleClass="navigation-label" />
+            </HBox>
+            <Region StackPane.alignment="CENTER" />
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Refresh Files" fx:id="refreshButton" styleClass="button" onAction="#refreshFileTree" />
                 <TextField fx:id="searchField" promptText="Search File" styleClass="text-field" />
-                <Region prefWidth="10" />
-                <Button text="Search" onAction="#searchFile" styleClass="button" />
-                <Region prefWidth="10" />
                 <Button text="Logout" styleClass="button" fx:id="logoutButton" onAction="#logout"/>
-            </children>
-        </HBox>
+            </HBox>
+        </StackPane>
     </top>
-    <left>
-        <VBox alignment="CENTER_LEFT" spacing="10">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10" />
-            </padding>
-            <children>
-                <HBox spacing="10">
-                    <ImageView fitWidth="30" fitHeight="30">
-                        <image>
-                            <Image url="@folder-invoices--v1.png" />
-                        </image>
-                    </ImageView>
-                    <Label text="Folders" styleClass="section-label" />
-                </HBox>
-                <ListView fx:id="folderList" styleClass="list-view" VBox.vgrow="ALWAYS" />
-                <TextField fx:id="folderName" promptText="Folder Name" styleClass="text-field" />
-                <Button text="Create Folder" onAction="#createFolder" styleClass="button" />
-            </children>
-        </VBox>
-    </left>
     <center>
-        <VBox alignment="CENTER_LEFT" spacing="10">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10" />
-            </padding>
-            <children>
-                <HBox spacing="10">
-                    <ImageView fitWidth="30" fitHeight="30">
-                        <image>
-                            <Image url="@pdf.png" />
-                        </image>
+        <SplitPane dividerPositions="0.05" styleClass="split-pane no-resize">
+            <VBox styleClass="dashboard-section" maxWidth="510">
+                <VBox styleClass="dashboard-container">
+                    <GridPane styleClass="dashboard-grid">
+                        <Label text="Total Pages:" styleClass="dashboard-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label fx:id="totalPageCountLabel" styleClass="dashboard-value" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    </GridPane>
+                    <Separator styleClass="dashboard-separator" />
+                    <GridPane styleClass="dashboard-grid">
+                        <Label text="Total A3 Pages:" styleClass="dashboard-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label fx:id="totalA3PageCountLabel" styleClass="dashboard-value" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    </GridPane>
+                    <Separator styleClass="dashboard-separator" />
+                    <GridPane styleClass="dashboard-grid">
+                        <Label text="Total A4 Pages:" styleClass="dashboard-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label fx:id="totalA4PageCountLabel" styleClass="dashboard-value" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    </GridPane>
+                    <Separator styleClass="dashboard-separator" />
+                    <GridPane styleClass="dashboard-grid">
+                        <Label text="Total Legal Pages:" styleClass="dashboard-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label fx:id="totalLegalPageCountLabel" styleClass="dashboard-value" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    </GridPane>
+                </VBox>
+                <VBox styleClass="upload-box">
+                    <Button fx:id="uploadButton" text="Upload PDF" onAction="#uploadPDF" styleClass="button"/>
+                </VBox>
+                <VBox styleClass="create-folder-box">
+                    <Button text="Create Folder in Root" onAction="#createNewFolderUnderRoot" styleClass="button" />
+                </VBox>
+                <VBox spacing="20" alignment="CENTER">
+                    <ImageView fitWidth="156" fitHeight="156">
+                        <Image url="@govkar.png"/>
                     </ImageView>
-                    <Label text="Files in the selected Folder" styleClass="section-label-long" />
-                </HBox>
-                <ListView fx:id="fileList" styleClass="list-view-long" VBox.vgrow="ALWAYS" />
-                <Button text="Upload PDF" onAction="#uploadPDF" styleClass="button" />
-                <HBox spacing="10">
-                    <ImageView fitWidth="30" fitHeight="30">
-                        <image>
-                            <Image url="@search.png" />
-                        </image>
+                </VBox>
+                <VBox spacing="20" alignment="CENTER">
+                    <ImageView fitWidth="507" fitHeight="123">
+                        <Image url="@KSSIDC_LOGO-removebg-preview.png"/>
                     </ImageView>
-                    <Label text="Search Result" styleClass="section-label-small" />
-                </HBox>
-                <ListView fx:id="searchResults" styleClass="list-view-small" VBox.vgrow="ALWAYS" />
-            </children>
-        </VBox>
+                </VBox>
+            </VBox>
+            <TreeView fx:id="fileTree" styleClass="tree-view" />
+        </SplitPane>
     </center>
+    <bottom>
+        <HBox styleClass="copyright">
+            <Region HBox.hgrow="ALWAYS" />
+            <Label text="© 2023 Govt of Karnataka. All rights reserved." styleClass="copyright-label"/>
+            <Region HBox.hgrow="ALWAYS" />
+        </HBox>
+    </bottom>
 </BorderPane>

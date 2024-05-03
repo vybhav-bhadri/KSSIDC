@@ -39,3 +39,4 @@ build/
 
 fileManager
 .pageCount.txt
+src/main/resources/serviceAccountKey.json
